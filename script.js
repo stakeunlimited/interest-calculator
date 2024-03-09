@@ -11,7 +11,7 @@
             max = parseFloat(element.getAttribute('max')),
             step = parseFloat(element.getAttribute('step')) || 1,
             oldValue = element.dataset.value || element.defaultValue || 0,
-            newValue = parseFloat(element.value.replace(/\$/, ''));
+            newValue = parseFloat(element.value.replace(/\€/, ''));
 
         if (isNaN(parseFloat(newValue))) {
             newValue = oldValue;
@@ -71,7 +71,7 @@
                 balance = (compound_interest + contribution_interest).toFixed(0);
             }
 
-            future_balance.innerHTML = '$' + balance;
+            future_balance.innerHTML = '€' + balance;
             principal_dataset.data.push(principal);
             interest_dataset.data.push(interest);
         }
@@ -144,7 +144,7 @@
                     intersect: false,
                     callbacks: {
                         label: function (tooltipItem, data) {
-                            return data.datasets[tooltipItem.datasetIndex].label + ': $' + tooltipItem.yLabel;
+                            return data.datasets[tooltipItem.datasetIndex].label + ': €' + tooltipItem.yLabel;
                         }
                     }
                 },
@@ -161,7 +161,7 @@
                         stacked: true,
                         ticks: {
                             callback: function (value) {
-                                return '$' + value;
+                                return '€' + value;
                             }
                         },
                         scaleLabel: {
