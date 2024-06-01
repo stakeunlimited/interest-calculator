@@ -35,7 +35,7 @@
         var P = parseFloat(initial_deposit.dataset.value), // Principal
             r = parseFloat(estimated_return.dataset.value / 100), // Annual Interest Rate
             c = parseFloat(contribution_amount.dataset.value), // Contribution Amount
-            n = parseInt(document.querySelector('[name="compound_period"]:checked').value), // Compound Period
+            n = 365 // parseInt(document.querySelector('[name="compound_period"]:checked').value), // Compound Period
             n2 = parseInt(document.querySelector('[name="contribution_period"]:checked').value), // Contribution Period
             t = parseInt(investment_timespan.value), // Investment Time Span
             currentYear = (new Date()).getFullYear()
@@ -48,13 +48,13 @@
 
         var principal_dataset = {
             label: 'Total Principal',
-            backgroundColor: 'rgb(0, 123, 255)',
+            backgroundColor: '#1d4ed8', // '#8300e9',
             data: []
         };
 
         var interest_dataset = {
             label: "Total Interest",
-            backgroundColor: 'rgb(23, 162, 184)',
+            backgroundColor: '#d946ef', // '#d946ef',
             data: []
         };
 
@@ -78,7 +78,8 @@
 
         return {
             labels: labels,
-            datasets: [principal_dataset, interest_dataset]
+            datasets: [principal_dataset, interest_dataset],
+            
         }
     }
 
@@ -131,13 +132,16 @@
         });
     }
 
+    Chart.defaults.global.defaultFontFamily='"Inter",sans-serif';
+    Chart.defaults.global.defaultFontColor="#000";
+    Chart.defaults.global.defaultFontSize=18;
     var ctx = document.getElementById('myChart').getContext('2d'),
         chart = new Chart(ctx, {
             type: 'bar',
             data: getChartData(),
             options: {
                 legend: {
-                    display: false
+                    display: false,
                 },
                 tooltips: {
                     mode: 'index',
