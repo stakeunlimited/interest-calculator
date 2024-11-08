@@ -54,7 +54,7 @@
 
         var interest_dataset = {
             label: "Total Interest",
-            backgroundColor: '#d946ef', // '#d946ef',
+            backgroundColor: '#33ff57',
             data: []
         };
 
